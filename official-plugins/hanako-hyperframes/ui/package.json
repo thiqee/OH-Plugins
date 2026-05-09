@@ -1,0 +1,22 @@
+{
+  "name": "hanako-hyperframes-ui",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@hana/plugin-components": "file:../../../../project-hana/packages/plugin-components",
+    "@hana/plugin-protocol": "file:../../../../project-hana/packages/plugin-protocol",
+    "@hana/plugin-sdk": "file:../../../../project-hana/packages/plugin-sdk",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.0",
+    "typescript": "^5.8.3",
+    "vite": "^7.0.0"
+  }
+}

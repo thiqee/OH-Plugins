@@ -1,0 +1,47 @@
+{
+  "manifestVersion": 1,
+  "id": "hanako-hyperframes",
+  "name": "HyperFrames Adapter for Hanako",
+  "version": "0.1.0",
+  "description": "A Hanako-styled HyperFrames video workspace with preview, timeline, lint, and render tools.",
+  "minAppVersion": "0.171.3",
+  "trust": "full-access",
+  "ui": {
+    "hostCapabilities": ["external.open", "clipboard.writeText"]
+  },
+  "contributes": {
+    "page": {
+      "title": {
+        "zh": "影帧",
+        "en": "Frames"
+      },
+      "route": "/studio",
+      "icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\" rx=\"1\"/><path d=\"M7 5v14M17 5v14M3 9h4M17 9h4M3 15h4M17 15h4\"/></svg>"
+    },
+    "configuration": {
+      "properties": {
+        "hyperframesCommand": {
+          "type": "string",
+          "title": "HyperFrames command",
+          "description": "Command used to run HyperFrames. Defaults to npx --yes hyperframes.",
+          "default": "npx --yes hyperframes",
+          "ui": { "control": "text" }
+        },
+        "disableTelemetry": {
+          "type": "boolean",
+          "title": "Disable HyperFrames telemetry",
+          "description": "Pass HYPERFRAMES_NO_TELEMETRY=1 to HyperFrames subprocesses.",
+          "default": true,
+          "ui": { "control": "switch" }
+        },
+        "previewIdleMinutes": {
+          "type": "integer",
+          "title": "Preview idle timeout",
+          "description": "Minutes before idle preview processes are stopped.",
+          "default": 20,
+          "ui": { "control": "number" }
+        }
+      }
+    }
+  }
+}
