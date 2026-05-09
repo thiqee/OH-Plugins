@@ -6,7 +6,7 @@
       "id": "hanako-hyperframes",
       "name": "HyperFrames Adapter for Hanako",
       "publisher": "OpenHanako",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "description": "A Hanako-styled HyperFrames video workspace with preview, timeline, lint, and render tools.",
       "license": "Apache-2.0",
       "categories": [

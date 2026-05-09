@@ -2,7 +2,7 @@
   "manifestVersion": 1,
   "id": "hanako-hyperframes",
   "name": "HyperFrames Adapter for Hanako",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Hanako-styled HyperFrames video workspace with preview, timeline, lint, and render tools.",
   "minAppVersion": "0.171.3",
   "trust": "full-access",

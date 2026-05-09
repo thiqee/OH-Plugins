@@ -1,3 +1,5 @@
+import { appendTokenParam } from '../../lib/auth-url.js';
+
 export type Project = {
   id: string;
   title: string;
@@ -42,9 +44,10 @@ export type Preview = {
 };
 
 const basePath = window.location.pathname.replace(/\/studio\/?$/, '');
+const authToken = new URLSearchParams(window.location.search).get('token') || '';
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  const response = await fetch(`${basePath}${path}`, {
+  const response = await fetch(appendTokenParam(`${basePath}${path}`, authToken), {
     ...init,
     headers: {
       'content-type': 'application/json',

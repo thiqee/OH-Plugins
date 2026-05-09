@@ -1,5 +1,6 @@
 import fs from "node:fs/promises";
 import path from "node:path";
+import { appendTokenParam } from "../lib/auth-url.js";
 
 export default function registerStudioRoutes(app, ctx) {
   app.get("/studio", (c) => c.html(renderShell(c, ctx)));
@@ -25,7 +26,10 @@ function renderShell(c, ctx) {
   const hanaCss = c.req.query("hana-css") || "";
   const theme = c.req.query("hana-theme") || "inherit";
   const locale = c.req.query("hana-locale") || c.req.query("locale") || c.req.query("lang") || "";
+  const token = c.req.query("token") || "";
   const base = `/api/plugins/${ctx.pluginId}`;
+  const panelCss = appendTokenParam(`${base}/assets/panel.css`, token);
+  const panelJs = appendTokenParam(`${base}/assets/panel.js`, token);
 
   return `<!doctype html>
 <html lang="${escapeAttr(htmlLangForLocale(locale))}">
@@ -33,11 +37,11 @@ function renderShell(c, ctx) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   ${hanaCss ? `<link rel="stylesheet" href="${escapeAttr(hanaCss)}">` : ""}
-  <link rel="stylesheet" href="${base}/assets/panel.css">
+  <link rel="stylesheet" href="${escapeAttr(panelCss)}">
 </head>
 <body data-hana-theme="${escapeAttr(theme)}" data-hana-locale="${escapeAttr(locale)}">
   <div id="root"></div>
-  <script type="module" src="${base}/assets/panel.js"></script>
+  <script type="module" src="${escapeAttr(panelJs)}"></script>
 </body>
 </html>`;
 }
