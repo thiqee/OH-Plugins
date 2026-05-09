@@ -1,0 +1,13 @@
+{
+  "name": "oh-plugins",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Official OpenHanako plugin marketplace index and official plugin sources.",
+  "license": "Apache-2.0",
+  "scripts": {
+    "build:index": "node scripts/build-marketplace.mjs",
+    "validate": "node scripts/validate.mjs",
+    "check": "npm run build:index && npm run validate"
+  }
+}

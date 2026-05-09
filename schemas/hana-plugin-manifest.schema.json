@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hana.local/schemas/hana-plugin-manifest.schema.json",
+  "title": "Hana Plugin Manifest",
+  "type": "object",
+  "required": ["id", "name", "version", "description"],
+  "properties": {
+    "manifestVersion": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "minAppVersion": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "trust": {
+      "enum": ["restricted", "full-access"]
+    },
+    "hidden": {
+      "type": "boolean"
+    },
+    "ui": {
+      "type": "object"
+    },
+    "contributes": {
+      "type": "object"
+    }
+  }
+}
+

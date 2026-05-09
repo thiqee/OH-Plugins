@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hana.local/schemas/plugin-entry.schema.json",
+  "title": "Hana Marketplace Plugin Entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "publisher",
+    "version",
+    "description",
+    "repository",
+    "compatibility",
+    "trust",
+    "permissions",
+    "contributions",
+    "distribution"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "publisher": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+(?:[-+][0-9A-Za-z.-]+)?$"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "license": {
+      "type": "string"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "keywords": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "homepage": {
+      "type": "string"
+    },
+    "repository": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "manifestUrl": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "readme": {
+      "type": "string",
+      "minLength": 1
+    },
+    "readmePath": {
+      "type": "string",
+      "minLength": 1
+    },
+    "readmeUrl": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "enum": ["official-source", "external-repository"]
+        },
+        "path": {
+          "type": "string"
+        }
+      }
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minAppVersion"],
+      "properties": {
+        "hanaApi": {
+          "type": "string"
+        },
+        "minAppVersion": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        }
+      }
+    },
+    "trust": {
+      "enum": ["restricted", "full-access"]
+    },
+    "permissions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "contributions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "tools",
+          "skills",
+          "commands",
+          "agents",
+          "configuration",
+          "routes",
+          "providers",
+          "extensions",
+          "page",
+          "widget",
+          "settingsTab",
+          "lifecycle"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "distribution": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "path"],
+          "properties": {
+            "kind": {
+              "const": "source"
+            },
+            "path": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind", "packageUrl", "sha256"],
+          "properties": {
+            "kind": {
+              "const": "release"
+            },
+            "packageUrl": {
+              "type": "string",
+              "pattern": "^https://"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          }
+        }
+      ]
+    },
+    "install": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "defaultEnabled": {
+          "type": "boolean"
+        }
+      }
+    },
+    "screenshots": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

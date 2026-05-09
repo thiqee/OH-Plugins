@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hana.local/schemas/marketplace.schema.json",
+  "title": "OH-Plugins Marketplace Index",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "plugins"],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "plugins": {
+      "type": "array",
+      "items": {
+        "$ref": "./plugin-entry.schema.json"
+      }
+    }
+  }
+}
