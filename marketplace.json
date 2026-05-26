@@ -53,6 +53,31 @@
       "install": {
         "defaultEnabled": false
       }
+    },
+    {
+      "id": "token-tracker",
+      "name": "Token 用量",
+      "publisher": "thiqee",
+      "version": "0.3.0",
+      "description": "展示所有 Agent 的 Token 消耗统计，支持按时间、Agent、模型筛选和下钻",
+      "trust": "full-access",
+      "compatibility": {
+        "minAppVersion": "0.82.0"
+      },
+      "contributions": [
+        "page",
+        "configuration"
+      ],
+      "permissions": [
+        "读取 Agent 历史会话 JSONL",
+        "使用文件系统扫描对话数据"
+      ],
+      "distribution": {
+        "kind": "release",
+        "packageUrl": "https://github.com/thiqee/HanaAgent-token-tracker/releases/download/v0.3.0/token-tracker.zip",
+        "sha256": "CB51F5818336E09430B22B3D619A0C6403A9FF3BDEA1D73C5AD363AF788D4DBE"
+      },
+      "readme": "# Token 用量\n\n展示 HanaAgent 所有 Agent 的 Token 消耗统计，支持按时间、Agent、模型筛选和下钻。\n\n## 功能\n\n- 按时间维度筛选（今日 / 本周 / 本月 / 全部）\n- 按 Agent、模型、供应商筛选\n- 每日趋势图 + 模型占比 + agent占比\n- 显示DeepSeek余额\n- 对话流水查看\n- 高消耗对话标记\n- 手动刷新\n"
     }
   ]
 }
